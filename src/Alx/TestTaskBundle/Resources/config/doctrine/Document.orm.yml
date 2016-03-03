@@ -1,0 +1,17 @@
+Alx\TestTaskBundle\Entity\Document:
+    type: entity
+    table: documents
+    repositoryClass: Alx\TestTaskBundle\Repository\DocumentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+    lifecycleCallbacks: {  }
