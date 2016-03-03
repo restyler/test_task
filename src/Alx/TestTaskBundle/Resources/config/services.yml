@@ -1,4 +1,9 @@
 services:
-#    alx_test_task.example:
-#        class: Alx\TestTaskBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    alx_test_task.twig.form_extension:
+        class: Alx\TestTaskBundle\Twig\FormExtension
+        public: false
+        arguments:
+            - '@form.factory'
+            - '@router'
+        tags:
+            - { name: twig.extension }

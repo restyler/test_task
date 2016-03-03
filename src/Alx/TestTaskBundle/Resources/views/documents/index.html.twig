@@ -1,0 +1,36 @@
+{% extends '@AlxTestTask/documents/base.html.twig' %}
+
+{% block body %}
+    <div class="page-header">
+        <h1>Documents</h1>
+    </div>
+
+    <table class="documents table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for document in documents %}
+            <tr>
+                <td><a href="{{ path('documents_show', { 'id': document.id }) }}">{{ document.name }}</a></td>
+                <td>{{ document.description }}</td>
+                <td>
+                    <a href="{{ path('documents_edit', { 'id': document.id }) }}" class="glyphicon glyphicon-edit" title="Edit"></a>
+                    {% set delete_document = delete_form(document) %}
+                    {{ form_start(delete_document) }}
+                        <button type="submit" class="btn btn-link glyphicon glyphicon-remove" title="Remove"
+                                data-role="needs-confirm"
+                                data-confirm-text="Are you sure you want to remove this document?"></button>
+                    {{ form_end(delete_document) }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('documents_new') }}" class="btn btn-default">Create</a>
+{% endblock %}

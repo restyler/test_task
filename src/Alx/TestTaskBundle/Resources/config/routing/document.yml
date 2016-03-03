@@ -1,0 +1,24 @@
+documents_index:
+    path:     /
+    defaults: { _controller: "AlxTestTaskBundle:Documents:index" }
+    methods:  GET
+
+documents_new:
+    path:     /new
+    defaults: { _controller: "AlxTestTaskBundle:Documents:new" }
+    methods:  [GET, POST]
+
+documents_show:
+    path:     /{id}
+    defaults: { _controller: "AlxTestTaskBundle:Documents:show" }
+    methods:  GET
+
+documents_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "AlxTestTaskBundle:Documents:edit" }
+    methods:  [GET, PUT]
+
+documents_delete:
+    path:     /{id}
+    defaults: { _controller: "AlxTestTaskBundle:Documents:delete" }
+    methods:  DELETE

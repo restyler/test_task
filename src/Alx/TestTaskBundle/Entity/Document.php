@@ -81,4 +81,3 @@ class Document
         return $this->description;
     }
 }
-
