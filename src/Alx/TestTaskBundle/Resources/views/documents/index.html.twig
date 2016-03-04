@@ -16,7 +16,7 @@
         <tbody>
         {% for document in documents %}
             <tr>
-                <td><a href="{{ path('documents_show', { 'id': document.id }) }}">{{ document.name }}</a></td>
+                <td><a href="{{ path('documents_edit', { 'id': document.id }) }}">{{ document.name }}</a></td>
                 <td>{{ document.description }}</td>
                 <td>
                     <a href="{{ path('documents_edit', { 'id': document.id }) }}" class="glyphicon glyphicon-edit" title="Edit"></a>

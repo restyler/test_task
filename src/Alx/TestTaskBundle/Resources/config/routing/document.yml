@@ -8,11 +8,6 @@ documents_new:
     defaults: { _controller: "AlxTestTaskBundle:Documents:new" }
     methods:  [GET, POST]
 
-documents_show:
-    path:     /{id}
-    defaults: { _controller: "AlxTestTaskBundle:Documents:show" }
-    methods:  GET
-
 documents_edit:
     path:     /{id}/edit
     defaults: { _controller: "AlxTestTaskBundle:Documents:edit" }
