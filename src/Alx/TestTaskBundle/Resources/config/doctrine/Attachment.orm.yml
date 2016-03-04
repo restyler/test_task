@@ -1,0 +1,32 @@
+Alx\TestTaskBundle\Entity\Attachment:
+    type: entity
+    table: attachments
+    repositoryClass: Alx\TestTaskBundle\Repository\AttachmentRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        order:
+            type: integer
+            column: ord
+        name:
+            type: string
+            length: 255
+        mimeType:
+            type: string
+            length: 255
+            column: mime_type
+        size:
+            type: bigint
+    manyToOne:
+        document:
+            targetEntity: Alx\TestTaskBundle\Entity\Document
+            inversedBy: attachments
+            joinColumn:
+                nullable: false
+    lifecycleCallbacks:
+        postPersist: [uploadFile]
+        preRemove: [removeFile]

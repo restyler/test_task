@@ -2,6 +2,10 @@ alx_test_task_documents:
     resource: "@AlxTestTaskBundle/Resources/config/routing/document.yml"
     prefix:   /documents
 
+alx_test_task_attachments:
+    resource: "@AlxTestTaskBundle/Resources/config/routing/attachment.yml"
+    prefix:   /attachments
+
 root:
     path: /
     defaults:

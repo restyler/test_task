@@ -17,3 +17,13 @@ documents_delete:
     path:     /{id}
     defaults: { _controller: "AlxTestTaskBundle:Documents:delete" }
     methods:  DELETE
+
+attachments_index:
+    path:     /{id}/attachments
+    defaults: { _controller: "AlxTestTaskBundle:Attachments:index" }
+    methods:  GET
+
+attachments_new:
+    path:     /{id}/attachments
+    defaults: { _controller: "AlxTestTaskBundle:Attachments:new" }
+    methods:  POST

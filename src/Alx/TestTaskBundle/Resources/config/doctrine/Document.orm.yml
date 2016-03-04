@@ -14,4 +14,11 @@ Alx\TestTaskBundle\Entity\Document:
             length: 255
         description:
             type: text
+    oneToMany:
+        attachments:
+            targetEntity: Alx\TestTaskBundle\Entity\Attachment
+            mappedBy: document
+            cascade: [persist, remove]
+            orderBy:
+                order: ASC
     lifecycleCallbacks: {  }

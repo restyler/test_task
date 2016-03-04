@@ -3,11 +3,13 @@
 namespace Alx\TestTaskBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DocumentType extends AbstractType
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+
+class AttachmentType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,10 +17,12 @@ class DocumentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('name')
-            ->add('description')
-        ;
+        $attachment = $builder->getData();
+        if ($attachment->getId()) {
+            $builder->add('order', IntegerType::class);
+        } else {
+            $builder->add('file', FileType::class);
+        }
     }
     
     /**
@@ -27,7 +31,7 @@ class DocumentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Alx\TestTaskBundle\Entity\Document'
+            'data_class' => 'Alx\TestTaskBundle\Entity\Attachment'
         ));
     }
 }

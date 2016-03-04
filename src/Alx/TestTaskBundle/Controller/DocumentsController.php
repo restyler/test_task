@@ -7,7 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Alx\TestTaskBundle\Entity\Document;
+use Alx\TestTaskBundle\Entity\Attachment;
 use Alx\TestTaskBundle\Form\DocumentType;
+use Alx\TestTaskBundle\Form\AttachmentType;
 
 /**
  * Documents controller.
@@ -66,6 +68,11 @@ class DocumentsController extends Controller
         $form = $this->createForm(DocumentType::class, $document, ['method' => 'PUT']);
         $form->handleRequest($request);
 
+        $attachment = new Attachment();
+        $attachment_form = $this->createForm(AttachmentType::class, $attachment, [
+            'action' => $this->generateUrl('attachments_new', ['id' => $document->getId()])
+        ]);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($document);
@@ -77,7 +84,8 @@ class DocumentsController extends Controller
         }
 
         return $this->render('@AlxTestTask/documents/edit.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'attachment_form' => $attachment_form->createView()
         ]);
     }
 

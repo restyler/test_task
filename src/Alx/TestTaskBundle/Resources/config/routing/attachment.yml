@@ -1,0 +1,14 @@
+attachments_show:
+    path:     /{id}
+    defaults: { _controller: "AlxTestTaskBundle:Attachments:show" }
+    methods:  GET
+
+attachments_delete:
+    path:     /{id}
+    defaults: { _controller: "AlxTestTaskBundle:Attachments:delete" }
+    methods:  DELETE
+
+attachments_reorder:
+    path:     /{id}/reorder
+    defaults: { _controller: "AlxTestTaskBundle:Attachments:reorder" }
+    methods:  PUT

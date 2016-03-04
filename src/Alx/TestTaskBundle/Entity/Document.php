@@ -22,6 +22,19 @@ class Document
      */
     private $description;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $attachments;
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->attachments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -79,5 +92,39 @@ class Document
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Add attachment
+     *
+     * @param \Alx\TestTaskBundle\Entity\Attachment $attachment
+     *
+     * @return Document
+     */
+    public function addAttachment(\Alx\TestTaskBundle\Entity\Attachment $attachment)
+    {
+        $this->attachments[] = $attachment;
+
+        return $this;
+    }
+
+    /**
+     * Remove attachment
+     *
+     * @param \Alx\TestTaskBundle\Entity\Attachment $attachment
+     */
+    public function removeAttachment(\Alx\TestTaskBundle\Entity\Attachment $attachment)
+    {
+        $this->attachments->removeElement($attachment);
+    }
+
+    /**
+     * Get attachments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAttachments()
+    {
+        return $this->attachments;
     }
 }
