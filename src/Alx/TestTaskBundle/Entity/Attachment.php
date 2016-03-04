@@ -232,6 +232,6 @@ class Attachment implements \JsonSerializable
 
     private function getUploadPath()
     {
-        return __DIR__ . '/../../../../web/uploads/';
+        return __DIR__ . '/../../../../uploads/';
     }
 }
