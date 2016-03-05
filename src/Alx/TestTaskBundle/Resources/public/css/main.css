@@ -1,9 +1,9 @@
-.documents form {
+.documents form, .attachments form {
     display: inline;
     padding-left: 2px;
 }
 
-.documents form button {
+.documents form button, .attachments form button {
     padding: 0;
     border: 0;
     vertical-align: top;
@@ -19,13 +19,31 @@
 
 .file_upload_status {
     padding: 6px 0 0 15px;
+    margin: 0;
 }
 
 .file_upload_progress {
     width: 30%;
-    margin-top: 6px;
+    margin: 6px 0 0;
 }
 
 .attachments {
     width: 50%;
+}
+
+.attachments tr {
+    background-color: #fff;
+}
+
+.attachments td:first-of-type {
+    width: 80%;
+}
+
+.attachments td:last-of-type {
+    width: 5%;
+}
+
+.attachments span.ui-icon {
+    display: inline-block;
+    vertical-align: text-top;
 }

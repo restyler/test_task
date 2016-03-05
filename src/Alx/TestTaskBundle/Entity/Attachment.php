@@ -44,6 +44,10 @@ class Attachment implements \JsonSerializable
      */
     private $file;
 
+    /**
+     * @var string
+     */
+    private $path;
 
     /**
      * Get id
@@ -203,6 +207,30 @@ class Attachment implements \JsonSerializable
         return $this->file;
     }
 
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return Attachment
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
     public function uploadFile()
     {
         $this->getFile()->move(
@@ -221,7 +249,8 @@ class Attachment implements \JsonSerializable
         return [
             'id' => $this->getId(),
             'name' => $this->getName(),
-            'size' => $this->getSize()
+            'size' => $this->getSize(),
+            'path' => $this->getPath()
         ];
     }
 

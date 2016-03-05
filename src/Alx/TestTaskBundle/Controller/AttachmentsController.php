@@ -20,6 +20,10 @@ class AttachmentsController extends Controller
     {
         $attachments = $document->getAttachments()->getValues();
 
+        foreach ($attachments as $attachment) {
+            $attachment->setPath($this->generateUrl('attachments_show', ['id' => $attachment->getId()]));
+        }
+
         return new JsonResponse($attachments);
     }
 
@@ -72,6 +76,18 @@ class AttachmentsController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            $query = $em->getRepository(Attachment::class)
+                        ->createQueryBuilder('a')
+                        ->update()
+                        ->set('a.order', 'a.order - 1')
+                        ->where('a.document = :document')
+                        ->andWhere('a.order > :order')
+                        ->setParameter('document', $attachment->getDocument())
+                        ->setParameter('order', $attachment->getOrder())
+                        ->getQuery();
+            $query->execute();
+
             $em->remove($attachment);
             $em->flush();
 
